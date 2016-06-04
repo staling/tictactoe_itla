@@ -8,6 +8,12 @@ char player = 'X';
 bool isAvailable(int row, int column)
 {
 	//TODO: Implement this code so that it tells the user whether or not he can play in the selected cell
+	if(board[row -1][column - 1] == '_'){
+		return true;
+	}
+	else{
+		return false;
+	}
 	return true;
 }
 
@@ -48,9 +54,82 @@ bool gameover()
 {
 	//TODO: Implement this method,verify if any player has won the match of it's being a tie.
 	//Return true if the game is over. Print message informing the user about what just happened.
-	if(false){ // change this with a real condition
-		cout << "You loose" << endl;
-	}
+
+	char jugada = Cuadro[0][0];
+     for(int i =0 ; i < 3; i++){
+             for(int j = 0 ; j < 3 ; j++){
+                     if(Cuadro[i][j] == '_'){
+                          break; break;
+                     }
+                     if(jugada != Cuadro[i][j]){
+                          break; break;
+
+                     }
+                     jugada = Cuadro[i][j];
+                     if(j == 2){
+                          printf("the best %c", jugada);
+                          return true;
+                     }
+              }
+
+     }
+
+
+
+     jugada = Cuadro[0][0];
+     for(int i =0 ; i < 3; i++){
+             for(int j = 0 ; j < 3 ; j++){
+                     if(Cuadro[j][i] == '_'){
+                          break; break;
+                     }
+                     if(jugada != Cuadro[j][i]){
+                          break; break;
+
+                     }
+                     jugada = Cuadro[j][i];
+                     if(j == 2){
+                          printf("the best %c", jugada);
+                          return true;
+                     }
+              }
+
+     }
+
+     jugada = Cuadro[0][0];
+     for(int i = 0 ; i < 3; i++){
+           if(Cuadro[i][i] == '_'){
+                 break;
+             }
+             if(jugada != Cuadro[i][i]){
+                   break;
+
+             }
+             jugada = Cuadro[i][i];
+             if(i == 2){
+                    printf("the best %c", jugada);
+                    return true;
+             }
+
+     }
+
+     jugada = Cuadro[0][2];
+     for(int i = 2 ; i >= 0; i--){
+           if(Cuadro[2-i][i] == '_'){
+                 break;
+             }
+             if(jugada != Cuadro[2-i][i]){
+                   break;
+
+             }
+             jugada = Cuadro[2-i][i];
+             if(i == 0){
+                    printf("the best %c", jugada);
+                    return true;
+             }
+
+     }
+
+	cout << "You loose" << endl;
 	return false;
 }
 
